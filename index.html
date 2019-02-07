@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="PL">
+<head>
+  <title>Gra Kamień - Papier - Nożyczki </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+  <div class="left">
+    
+    <div class="buttons">
+      <button class="btn" id="newGame">New game</button>
+      <button class="btn player-move" id="btnPapier" data-move="paper"> Papier</button>
+      <button class="btn player-move" id="btnKamien" data-move="rock">Kamień</button>
+      <button class="btn player-move" id="btnNozyczki" data-move="scissors">Nożyczki</button>
+      <button class="btn dis" onClick="location.href=location.href">Restart</button>
+    </div>
+  </div>
+
+  <div class="outputs">
+    
+    <div id="output"></div>
+
+  </div>
+  <div class="right">
+    <div id="infoRound"></div>
+    <div id="results"></div>
+    <div id="rounds"></div>
+    <div id="matchResult"></div>
+  </div>
+
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
+

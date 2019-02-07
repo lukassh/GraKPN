@@ -12,14 +12,15 @@
   font-weight: bold;
   color: white;
 }
+
 .btn:first-child {
   margin-bottom: 50px;
 }
+
 .outputs {
   max-width: 300px;
   width: 100%;
   float: left;
- 
   text-align: center;
   font-size: 22px;
   padding: 50px 0;
@@ -40,16 +41,20 @@
 #results {
   font-weight: bolder;
   font-size: 20px;
-  
 }
+
 #rounds {
   font-weight: bolder;
   font-size: 30px;
 }
+
 #matchResult {
   font-weight: bolder;
   font-size: 50px;
 }
+
 .dis {
   display: none;
 }
+
+/*# sourceMappingURL=style.css.map */
