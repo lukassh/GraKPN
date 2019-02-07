@@ -1,4 +1,4 @@
-// zmienne buttons
+/* // zmienne buttons
 var uPapier = document.getElementById('btnPapier');
 var uKamien = document.getElementById('btnKamien');
 var uNozyczki = document.getElementById('btnNozyczki');
@@ -100,11 +100,60 @@ newGame.addEventListener('click', function() {
           };  
         };
  });
-
+*/
 
 var guziki = document.querySelectorAll('player-move');
-for ( var i = 0; i < guziki.length; i++ ){
+for ( var i=0; i<guziki.length; i++ ){
   attr = this.getAttribute('data-move');
   playerMove(attr);
 }
 
+var params = {
+  roundsPlayed: 0,
+  playerScore: 0,
+  computerScore: 0,
+  roundsWon: 0,
+  roundsLost: 0,
+  howManyRounds: 0;
+  gameDone: false;
+}
+var player = { score: 0, round: 0, choice: ''  };
+var computer = { score: 0, round: 0, choice: ''};
+var rounds = { akt: 1, max: 0};
+
+  // Modale 
+  
+  var showModal = function(event){
+    event.preventDefault();
+    document.querySelector('#modal-overlay').classList.add('show');
+  };
+  
+  
+  var modalLinks = document.querySelectorAll('.show-modal');
+  
+  for(var i = 0; i < modalLinks.length; i++){
+    modalLinks[i].addEventListener('click', showModal);
+  }
+
+
+  var hideModal = function(event){
+    event.preventDefault();
+    document.querySelector('#modal-overlay').classList.remove('show');
+  };
+  
+  var closeButtons = document.querySelectorAll('.modal .close');
+  
+  for(var i = 0; i < closeButtons.length; i++){
+    closeButtons[i].addEventListener('click', hideModal);
+  }
+  
+  // Dobrą praktyką jest również umożliwianie zamykania modala poprzez kliknięcie w overlay. 
+  
+  document.querySelector('#modal-overlay').addEventListener('click', hideModal);
+  var modals = document.querySelectorAll('.modal');
+  
+  for(var i = 0; i < modals.length; i++){
+    modals[i].addEventListener('click', function(event){
+      event.stopPropagation();
+    });
+  }
