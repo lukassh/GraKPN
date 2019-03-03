@@ -99,7 +99,7 @@ body {
 
 #matchResult {
   font-weight: bolder;
-  font-size: 50px;
+  font-size: 30px;
   color: #2c2c54;
 }
 
@@ -122,12 +122,12 @@ body {
 }
 
 .modal {
-  display: none;
+  color: #2c2c54;
   background: #f7f1e3;
   border-radius: 10px;
   box-shadow: 2px 2px 10px 0 #5A7A7A;
   width: 500px;
-  height: 500px;
+  height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -137,10 +137,9 @@ body {
 .modal header {
   display: flex;
   justify-content: center;
-  color: #2c2c54;
 }
 
-.modal.show {
+.modal .show {
   display: block;
 }
 
@@ -148,8 +147,10 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 5px;
-  color: #000;
+  padding: 3px 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: grey;
   text-decoration: none;
 }
 
@@ -163,12 +164,24 @@ body {
 
 .modal .modal-content {
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
   height: 300px;
+}
+
+.modalResults table {
+  border: 1px solid black;
+  width: 90%;
+  height: 60%;
+  text-align: center;
+}
+
+.modalResults table td {
+  font-size: 20px;
+  border: 1px solid #a6a6a6;
 }
 
 /*# sourceMappingURL=style.css.map */

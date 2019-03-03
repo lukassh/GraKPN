@@ -13,7 +13,7 @@
         
         <div class="buttons">
           <button class="btn" id="newGame">New game</button>
-          <p class="user-name" id="player-name">Player</p>
+          
           <button class="btn btn-player player-move" id="btnPapier" data-move="Papier"><em class="far fa-hand-paper"></em></button>
           <button class="btn btn-player player-move" id="btnKamien" data-move="Kamień"><em class="far fa-hand-rock"></em></button>
           <button class="btn btn-player player-move" id="btnNozyczki" data-move="Nożyczki"><em class="far fa-hand-scissors"></em></button>
@@ -37,36 +37,39 @@
       <!-- modal -->
       <div class="overlay" id="overlay">
         <!-- new game -->
-        
+
         <!-- results -->
-        <div class="modal" id="modalResults">
+        <div class="modal modalResults" id="modalResults">
           <a href="#" class="close">x</a>
           
           <header><h1>Results</h1></header>
           <hr>
           <div class="modal-content">
             <div id="matchResult"></div>
+              <table class="tableResults">
+                <tr>
+                  <td rowspan="2">Player </td>
+                  <td>Points:</td>
+                  <td><span id="tablePoints"></span></td>
+                  <td rowspan="2">Computer</td>
+                </tr>
+                <tr>
+                  <td>Rounds</td>
+                  <td><span id="tableRounds"></span></td>
+                 </tr>
+              </table>
             <button onclick="location.href=location.href" class="btn restart">Restart</button>
 
 
           </div>
         </div>
-        <div class="modal" id="modalNewGame">
-          <a href="#" class="close">x</a>
-          
-          <header><h1>Results</h1></header>
-          <hr>
-          <div class="modal-content">
-            <div id="matchResult"></div>
-            <button class="btn restart">Restart</button>
+     
 
-          </div>
-        </div>
       </div>
   </div>
   <!-- modale -->
 
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
 

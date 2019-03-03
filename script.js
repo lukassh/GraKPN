@@ -1,4 +1,4 @@
-
+`use strict`;
 var newGame = document.getElementById('newGame');
 // zmienne tekst
 var output = document.getElementById('output');
@@ -6,6 +6,8 @@ var results = document.getElementById('results');
 var rounds = document.getElementById('rounds');
 var infoRound = document.getElementById('infoRound');
 var matchResult = document.getElementById('matchResult');
+let playerName = document.getElementById('playerName');
+let playerNameOutput = document.getElementById('player-name');
 //zmienne globalne
 
 var params = {
@@ -27,14 +29,14 @@ var params = {
 
     // check winner
     function checkWinner(){
-       if(params.playerChoise === params.computerChoise) { output.innerHTML = ('<strong>Remis!</strong><br>, You played ' +params.playerChoise + ' and Computer played: ' +params.computerChoise); }
+       if(params.playerChoise === params.computerChoise) { output.innerHTML = ('<strong>Remis!</strong><br>, ' + playerName +' played ' +params.playerChoise + ' and Computer played: ' +params.computerChoise); }
       else if((params.playerChoise === 'Kamień' && params.computerChoise === 'Nożyczki') || (params.playerChoise === 'Papier' && params.computerChoise === 'Kamień') || (params.playerChoise === 'Nożyczki' &&  params.computerChoise === 'Papier')
       ){ 
-        output.innerHTML = ('You <strong>Won!</strong><br> You played: ' +params.playerChoise + ' and Computer played: ' +params.computerChoise);
+        output.innerHTML = ('You <strong>Won!</strong><br> ' + playerName +' played: ' +params.playerChoise + ' and Computer played: ' +params.computerChoise);
         params.playerScore++; 
        }
       else {
-        output.innerHTML = ('You <strong>Lose</strong>!<br> You played: ' +params.playerChoise + ' and Computer played: ' +params.computerChoise);
+        output.innerHTML = ('You <strong>Lose</strong>!<br> ' + playerName +' played: ' +params.playerChoise + ' and Computer played: ' +params.computerChoise);
         params.computerScore++;
       };
     };
@@ -103,27 +105,34 @@ var params = {
             var choise = ['Papier', 'Kamień', 'Nożyczki'];
               return choise[Math.floor(Math.random() *3)];
             }; 
+
+     function startGame() {
+        document.getElementById('overlay').classList.add('show');
+        document.getElementById('modalNewGame').classList.add('show');
+        var roundsToPlay = document.getElementById('howManyRounds');
+        var params.roundsMax = roundsToPlay.value;
+
+        playerNameOutput.innerHTML = playerName;
+        infoRound.innerHTML = ('gramy ' +params.roundsMax + ' rundy.');
+      
+       var buttonMoves = document.querySelectorAll('.player-move');   
+        
+        for (var i=0; i < buttonMoves.length; i ++ ) {
+           
+           buttonMoves[i].addEventListener('click', function() {
+            var moveName = this.getAttribute('data-move');
+            playerMove(moveName);
+           });
+        } 
+ 
+        compMove(); 
+
+    }; 
                                                            // START *********************************** 
 //start 
-newGame.addEventListener('click', function() {
-  
-  //uPapier.addEventListener("click", function(){ moves(); });
-  //uKamien.addEventListener('click', function(){ moves(); });
-  //uNozyczki.addEventListener('click', function(){ moves(); });
-  var buttonMoves = document.querySelectorAll('.player-move');   
-     
-  params.roundsMax = window.prompt('Ile rund gramy?: ');
-  infoRound.innerHTML = ('gramy ' +params.roundsMax + ' rundy.');
-  
-  for (var i=0; i < buttonMoves.length; i ++ ) {
-     
-     buttonMoves[i].addEventListener('click', function() {
-      var moveName = this.getAttribute('data-move');
-      playerMove(moveName);
-     });
-  } 
- 
-  compMove();  
+newGame.addEventListener('click', function(event) {
+    openModal();
+   
 });
 
 
@@ -133,26 +142,21 @@ newGame.addEventListener('click', function() {
   function openModal() {
     document.getElementById('overlay').classList.add('show');
     document.getElementById('modalResults').classList.add('show');
-  }; 
-  
-
+  };   
   function closeModal() {
     document.getElementById('overlay').classList.remove('show')
   };
-
   document.querySelectorAll('#overlay .js--close-modal').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault()
       closeModal()
     })
   });
-
   document.querySelector('#overlay').addEventListener('click', function(e) {
     if(e.target === this) {
       closeModal()
     }
   });
-
   document.addEventListener('keyup', function(e) {
     if(e.keyCode === 27) {
       closeModal()
