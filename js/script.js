@@ -75,20 +75,16 @@ var params = {
     function checkMatchWinner() {
 
       if(params.playerRound > params.computerRound) {
-        disableBtn();
         openModal(modalResults);
         matchResult.innerHTML = ('Gratulacje Wygrałeś !');
         }
-      else if(params.playerRound === params.computerRound ) {
-        disableBtn();
+      else if(params.playerRound === params.computerRound ) { 
         openModal(modalResults);
         matchResult.innerHTML = ('Remis !');
         }
       else if(params.playerRound < params.computerRound) { 
         openModal(modalResults);
-        disableBtn();
         matchResult.innerHTML = ('Niestety przegrałeś !');
-
       };
     };
     function disableBtn() {
