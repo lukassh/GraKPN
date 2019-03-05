@@ -8,9 +8,7 @@ var infoRound = document.getElementById('infoRound');
 var matchResult = document.getElementById('matchResult');
 let modalPoints = document.getElementById('tablePoints');
 let modalRounds = document.getElementById('tableRounds');
-let plName = document.getElementById('playerName');
-let howManyRounds = document.getElementById('howManyRounds');
-let outputUserName = document.getElementById('userName');
+let outputRounds = document.getElementById('roundsStatus');
 //zmienne globalne
 
 var params = {
@@ -23,6 +21,7 @@ var params = {
   computerChoise: '',
   roundsAkt: 1,
   roundsMax: 1,
+  roundStat: '',
 }
                                                 // Funkcje **********************************
     // computer  move
@@ -48,24 +47,25 @@ var params = {
     //adding text 
     function writeScore() {
        results.innerHTML = ('Wynik rundy: ' +params.playerScore + ' : ' +params.computerScore);
-       modalPoints.innerHTML = (params.playerScore + ' : ' +params.computerScore);
+       modalPoints.innerHTML = (params.roundsMax);
+       writeTableRounds();
     };
 
     //check score - rounds
     function checkScore() {
-      if(params.playerScore === 10) {
+      if(params.playerScore === 3) {
         params.playerRound++;
         params.roundsAkt++;
         params.playerScore = 0; 
         params.computerScore = 0;
         output.innerHTML = ('Gratualcje wygrałeś rundę Runda: ');
       }  
-      else if(params.computerScore === 10){ 
+      else if(params.computerScore === 3){ 
         params.computerRound++; 
         params.roundsAkt++;
         params.playerScore = 0; 
         params.computerScore = 0;
-        output.innerHTML = ('Nietstye przegrałeś rundę Runda: ');
+        output.innerHTML = ('Nietstye przegrałeś rundę Runda: ');     
       }; 
       rounds.innerHTML = ('Wynik meczu: ' +params.playerRound + ' : ' +params.computerRound);
       modalRounds.innerHTML = (params.playerRound + ' : ' +params.computerRound);
@@ -109,6 +109,12 @@ var params = {
             var choise = ['Papier', 'Kamień', 'Nożyczki'];
               return choise[Math.floor(Math.random() *3)];
             }; 
+    function writeTableRounds(){
+        outputRounds.innerHTML = '';
+        for (var i = 0; i < params.roundsMax; i++) {
+        outputRounds.insertAdjacentHTML('beforeend', '<tr><td>Runda '+ (i+1) + ': </td><td>' +params.playerScore + ' : ' +params.computerScore + '</td></tr>'); 
+      }
+    }  
                                                     // START *********************************** 
 //start 
 newGame.addEventListener('click', function() {
