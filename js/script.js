@@ -139,9 +139,9 @@ newGame.addEventListener('click', function() {
 
 // modale                                                     MODALE ***********************************
   
-  function openModal(mod) {
+  function openModal() {
     document.getElementById('overlay').classList.add('show');
-    document.getElementById(mod).classList.add('show');
+    document.getElementById('modalResults').classList.add('show');
     disableBtn();
   }; 
 
